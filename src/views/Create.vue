@@ -1,20 +1,48 @@
 <template>
-  <div>
+  <div class="create">
     <h1>Create task</h1>
-    <form>
+    <form @submit.prevent="submitHandler">
       <div class="group">
-        <input type="text" required />
+        <input type="text" required v-model="title"/>
         <span class="bar"></span>
-        <label>Имя</label>
+        <label>Task</label>
+        <textarea v-model="description" placeholder="Type..."></textarea>
+        <p>{{description.length}}/2048</p>
+        <button class="btn" type="submit">Create</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+export default {
+  data: () => ({
+    description: "",
+    title: ""
+  }),
+  methods: {
+    submitHandler () {
+      const task = {
+        title: this.title,
+        description: this.description,
+        id: Date.now(),
+        status: 'active'
+      }
+      console.log(task);
+    }
+  },
+  destroyed(){
+
+  }
+};
 </script>
 
 <style scoped>
+form {
+  display: flex;
+  justify-content: center;
+}
+
 .group {
   position: relative;
   margin-bottom: 30px;
@@ -80,5 +108,18 @@ input:valid ~ label {
 input:focus ~ .bar:before,
 input:focus ~ .bar:after {
   width: 50%;
+}
+textarea {
+  margin-top: 20px;
+  width: 280px;
+  display: block;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  background: #e9eff6;
+  line-height: 40px;
+  border-width: 0;
+  border-radius: 20px;
+  font-family: "Roboto", sans-serif;
+  resize: none;
 }
 </style>
