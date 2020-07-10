@@ -20,5 +20,8 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters:{
+    tasks: s => s.tasks
   }
 })
