@@ -18,7 +18,7 @@
             >
             <td>{{idx+1}}</td>
             <td>{{task.title}}</td>
-            <td><div>{{task.description}}</div></td>
+            <td class="desc__td"><div class="text">{{task.description}}</div></td>
             <td><router-link tag="button" class="btn btn-small" :to="'/task/' + task.id">
                 Open
             </router-link>
@@ -26,7 +26,7 @@
             </tr>
         </tbody>
     </table>
-    <p v-else>No tasks</p>
+    <p v-else class="no__task">No tasks</p>
   </div>
 </template>
 
@@ -39,3 +39,15 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.text{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.desc__td{
+    max-width: 200px;
+}
+</style>
