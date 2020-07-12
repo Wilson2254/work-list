@@ -17,11 +17,9 @@ export default new Vuex.Store({
 
       const idx = tasks.findIndex(t => t.id === id)
       const task = tasks[idx]
-
+      tasks[idx] = { ...task, description }
       state.tasks = tasks
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
-
-      tasks[idx] = { ...task, description }
     },
     deleteTask(state, id) {
       const tasks = state.tasks.concat()
