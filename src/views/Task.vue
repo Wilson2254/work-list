@@ -8,7 +8,7 @@
           <textarea v-model="description" placeholder="Type..."></textarea>
           <p>{{description.length}}/512</p>
           <button class="btn" type="submit">Update</button>
-           <button class="btn" type="submit">Delete</button>
+           <button class="btn" @click="deleteTask">Delete</button>
         </div>
       </form>
     </div>
@@ -37,11 +37,15 @@ export default {
           description: this.description
       });
       this.$router.push("/list");
-    }
+    },
+        deleteTask() {
+      this.$store.dispatch("deleteTask", {
+          id: this.task.id,
+      });
+      this.$router.push("/list");
+    },
+
   },
-  destroyed() {
-      
-  }
 };
 </script>
 

@@ -26,7 +26,6 @@ export default {
         title: this.title,
         description: this.description,
         id: Date.now(),
-        status: 'active'
       }
       this.$store.dispatch('createTask', task)
       this.$router.push('/list')

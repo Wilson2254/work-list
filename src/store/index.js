@@ -10,7 +10,6 @@ export default new Vuex.Store({
   mutations: {
     createTask(state, task){
       state.tasks.push(task)
-
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     updateTask(state, {id, description}){
@@ -23,6 +22,9 @@ export default new Vuex.Store({
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
 
       tasks[idx] = {...task, description}
+    },
+    deleteTask(state){
+      localStorage.removeItem('tasks', JSON.stringify(state.tasks))
     }
   },
   actions: {
@@ -31,6 +33,9 @@ export default new Vuex.Store({
     },
     updateTask ({commit}, task){
       commit('updateTask', task)
+    },
+    deleteTask ({commit}, task){
+      commit('deleteTask', task)
     }
   },
   modules: {
